@@ -25,9 +25,15 @@
                     New Page
                 </a>
             </li>
+            <li>
+                <a href="{{ path('app_spa_message') }}" hx-target="#response-div">
+                    Message
+                </a>
+            </li>
         </ul>
     </nav>
 
+    <div id="alert-div" hx-swap-oob="true"></div>
     <div id="response-div">
         {% block body %}{% endblock %}
     </div>

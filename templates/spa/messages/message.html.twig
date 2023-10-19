@@ -1,0 +1,15 @@
+{% extends app.request.headers.get('hx-request') ? 'ajax_base.html.twig' : 'base.html.twig' %}
+
+{% block body %}
+    {% if submitted is defined and submitted is same as true %}
+        <div hx-swap-oob="true" id="alert-div">
+            <p>Message "{{ message.content }}" has been sent!</p>
+        </div>
+    {% endif %}
+
+        {{ form_start(form) }}
+        {{ form_label(form.content) }}
+        {{ form_widget(form.content) }}
+        {{ form_widget(form.submit) }}
+    {{ form_end(form) }}
+{% endblock %}
