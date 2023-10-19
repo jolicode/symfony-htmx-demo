@@ -19,10 +19,6 @@ class MessageType extends AbstractType
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Send',
-                'attr' => [
-                    'hx-post' => $options['action'],
-                    'hx-target' => '#response-div',
-                ],
             ])
         ;
     }

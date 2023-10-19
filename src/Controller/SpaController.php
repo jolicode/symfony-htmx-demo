@@ -40,6 +40,7 @@ class SpaController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $message = $form->getData();
             $em->persist($message);
             $em->flush();
 
