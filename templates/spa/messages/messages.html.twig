@@ -1,4 +1,4 @@
-{% extends app.request.headers.get('hx-boosted') ? 'ajax_base.html.twig' : 'base.html.twig' %}
+{% extends app.request.headers.get('hx-request') ? 'ajax_base.html.twig' : 'base.html.twig' %}
 
 {% block body %}
     <table>

@@ -35,6 +35,24 @@
                     Messages
                 </a>
             </li>
+            <li>
+                <a
+                    href="{{ path('app_register') }}"
+                    hx-target="#modal-div"
+                    hx-push-url="false"
+                >
+                    Register
+                </a>
+            </li>
+            <li>
+                <a
+                    href="{{ path('app_login') }}"
+                    hx-target="#modal-div"
+                    hx-push-url="false"
+                >
+                    Login
+                </a>
+            </li>
         </ul>
     </nav>
 
@@ -42,5 +60,6 @@
     <div id="response-div">
         {% block body %}{% endblock %}
     </div>
+    <div id="modal-div"></div>
     </body>
 </html>

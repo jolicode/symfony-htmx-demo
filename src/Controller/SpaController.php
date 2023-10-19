@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SpaController extends AbstractController
 {
@@ -68,6 +69,38 @@ class SpaController extends AbstractController
         return $this->render('spa/messages/message_list.html.twig', [
             'messages' => $messageRepository->getByContentLike($search),
         ]);
+    }
+
+    #[Route('/login', name: 'app_login')]
+    public function login(AuthenticationUtils $authenticationUtils): Response
+    {
+        $error = $authenticationUtils->getLastAuthenticationError();
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        return $this->render('login/index.html.twig', [
+            'controller_name' => 'LoginController',
+            'last_username' => $lastUsername,
+            'error' => $error,
+        ]);
+    }
+
+    #[Route('/login/success', name: 'app_login_success')]
+    public function success(): Response
+    {
+        $response = $this->render('spa/index.html.twig', [
+            'controller_name' => 'RegistrationController', // you could also remove it
+        ]);
+
+        $response->headers->set('HX-Refresh', 'true');
+
+        return $response;
+    }
+
+    #[Route('/logout', name: 'app_logout', methods: ['GET'])]
+    public function logout(): never
+    {
+        // controller can be blank: it will never be called!
+        throw new \Exception('Don\'t forget to activate logout in security.yaml');
     }
 
     #[Route('/_/messages/list', name: 'app_spa_message_list')]

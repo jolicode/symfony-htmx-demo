@@ -1,0 +1,35 @@
+{% extends app.request.headers.get('hx-request') ? 'ajax_base.html.twig' : 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div id="modal">
+        <div class="modal-underlay"></div>
+        <div class="modal-content">
+            <h1>Register</h1>
+
+            {{ form_errors(registrationForm) }}
+
+            {{ form_start(registrationForm, {
+                'attr': {
+                    'hx-post': path('app_register'),
+                    'hx-target': '#modal',
+                    'hx-swap': 'outerHTML',
+                    'hx-boost': 'true',
+                }
+            }) }}
+            {{ form_widget(registrationForm._token) }}
+            {{ form_row(registrationForm.email) }}
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Password'
+            }) }}
+            <button type="submit" class="btn">Register</button>
+            {{ form_end(registrationForm) }}
+            <div>
+                <a href="#" hx-get="#" hx-target="#modal" hx-swap="delete">
+                    Close
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
