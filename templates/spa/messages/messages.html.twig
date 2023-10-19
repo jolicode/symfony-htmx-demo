@@ -16,4 +16,16 @@
         </tr>
         </tbody>
     </table>
+    <hr class="mt-4 mb-3">
+
+    <input type="search"
+           name="search" placeholder="Search for a message"
+           hx-post="{{ path('app_spa_search_message') }}"
+           hx-trigger="keyup changed delay:100ms, search"
+           hx-target="#search-results">
+
+    <table>
+        <tbody id="search-results">
+        </tbody>
+    </table>
 {% endblock %}

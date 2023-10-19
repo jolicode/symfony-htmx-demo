@@ -60,6 +60,16 @@ class SpaController extends AbstractController
         return $this->render('spa/messages/messages.html.twig');
     }
 
+    #[Route('/search/message', name: 'app_spa_search_message', methods: ['POST'])]
+    public function searchMessage(Request $request, MessageRepository $messageRepository): Response
+    {
+        $search = $request->request->get('search');
+
+        return $this->render('spa/messages/message_list.html.twig', [
+            'messages' => $messageRepository->getByContentLike($search),
+        ]);
+    }
+
     #[Route('/_/messages/list', name: 'app_spa_message_list')]
     public function messageList(MessageRepository $messageRepository): Response
     {
