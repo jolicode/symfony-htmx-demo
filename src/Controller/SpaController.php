@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Message;
 use App\Form\MessageType;
+use App\Repository\MessageRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -51,4 +52,19 @@ class SpaController extends AbstractController
         return $this->render('spa/messages/message.html.twig', [
             'form' => $form->createView(),
         ]);
-    }}
+    }
+
+    #[Route('/messages', name: 'app_spa_messages')]
+    public function messages(): Response
+    {
+        return $this->render('spa/messages/messages.html.twig');
+    }
+
+    #[Route('/_/messages/list', name: 'app_spa_message_list')]
+    public function messageList(MessageRepository $messageRepository): Response
+    {
+        return $this->render('spa/messages/message_list.html.twig', [
+            'messages' => $messageRepository->findAll(),
+        ]);
+    }
+}

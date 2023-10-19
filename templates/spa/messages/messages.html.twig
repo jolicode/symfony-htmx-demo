@@ -1,0 +1,19 @@
+{% extends app.request.headers.get('hx-boosted') ? 'ajax_base.html.twig' : 'base.html.twig' %}
+
+{% block body %}
+    <table>
+        <thead>
+        <tr>
+            <th>Comments</th>
+        </tr>
+        </thead>
+        <tbody
+                hx-get="{{ path('app_spa_message_list') }}"
+                hx-target="this"
+                hx-trigger="load, every 5s">
+        <tr>
+            <td>Loading</td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}

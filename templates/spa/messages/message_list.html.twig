@@ -1,0 +1,13 @@
+{% for message in messages %}
+    <tr>
+        <td>
+            {{ message.content }}
+        </td>
+    </tr>
+{% else %}
+    <tr>
+        <td>
+            No results found
+        </td>
+    </tr>
+{% endfor %}
