@@ -13,6 +13,23 @@
         {% endblock %}
     </head>
     <body>
+    <nav hx-boost="true">
+        <ul>
+            <li>
+                <a href="{{ path('app') }}" hx-target="#response-div">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('app_new_page') }}" hx-target="#response-div">
+                    New Page
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="response-div">
         {% block body %}{% endblock %}
+    </div>
     </body>
 </html>
