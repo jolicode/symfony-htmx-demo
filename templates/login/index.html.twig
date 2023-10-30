@@ -1,8 +1,8 @@
-{% extends app.request.headers.get('hx-request') ? 'ajax_base.html.twig' : 'base.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Login{% endblock %}
 
-{% block body %}
+{% block modal %}
     <div id="modal">
         <div class="modal-underlay"></div>
         <div class="modal-content">
@@ -16,8 +16,8 @@
                     action="{{ path('app_login') }}"
                     method="post"
                     hx-post="{{ path('app_login') }}"
-                    hx-target="#modal"
-                    hx-swap="outerHTML"
+                    hx-target="#modal-div"
+                    hx-select="#modal"
                     hx-boost="true"
             >
                 <label for="username">Email:</label>

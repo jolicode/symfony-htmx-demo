@@ -1,8 +1,8 @@
-{% extends app.request.headers.get('hx-request') ? 'ajax_base.html.twig' : 'base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}Register{% endblock %}
 
-{% block body %}
+{% block modal %}
     <div id="modal">
         <div class="modal-underlay"></div>
         <div class="modal-content">
@@ -13,8 +13,8 @@
             {{ form_start(registrationForm, {
                 'attr': {
                     'hx-post': path('app_register'),
-                    'hx-target': '#modal',
-                    'hx-swap': 'outerHTML',
+                    'hx-target': '#modal-div',
+                    'hx-select': '#modal',
                     'hx-boost': 'true',
                 }
             }) }}

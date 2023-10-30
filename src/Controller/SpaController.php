@@ -33,9 +33,7 @@ class SpaController extends AbstractController
     {
         $message = new Message();
 
-        $form = $this->createForm(MessageType::class, $message, [
-            'action' => $this->generateUrl('app_spa_message'),
-        ]);
+        $form = $this->createForm(MessageType::class, $message);
 
         $form->handleRequest($request);
 
@@ -62,10 +60,10 @@ class SpaController extends AbstractController
         return $this->render('spa/messages/messages.html.twig');
     }
 
-    #[Route('/search/message', name: 'app_spa_search_message', methods: ['POST'])]
+    #[Route('/search/message', name: 'app_spa_search_message', methods: ['GET'])]
     public function searchMessage(Request $request, MessageRepository $messageRepository): Response
     {
-        $search = $request->request->get('search');
+        $search = $request->get('search');
 
         return $this->render('spa/messages/message_list.html.twig', [
             'messages' => $messageRepository->getByContentLike($search),

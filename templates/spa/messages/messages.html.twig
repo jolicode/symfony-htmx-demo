@@ -1,4 +1,4 @@
-{% extends app.request.headers.get('hx-request') ? 'ajax_base.html.twig' : 'base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block body %}
     <table>
@@ -20,7 +20,7 @@
 
     <input type="search"
            name="search" placeholder="Search for a message"
-           hx-post="{{ path('app_spa_search_message') }}"
+           hx-get="{{ path('app_spa_search_message') }}"
            hx-trigger="keyup changed delay:100ms, search"
            hx-target="#search-results">
 

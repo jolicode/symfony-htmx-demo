@@ -1,15 +1,15 @@
-{% extends app.request.headers.get('hx-request') ? 'ajax_base.html.twig' : 'base.html.twig' %}
+{% extends 'base.html.twig' %}
+
+{% block alert %}
+    {% if message is defined %}
+        <p>Message "{{ message.content }}" has been sent!</p>
+    {% endif %}
+{% endblock %}
 
 {% block body %}
-    {% if message is defined %}
-        <div hx-swap-oob="true" id="alert-div">
-            <p>Message "{{ message.content }}" has been sent!</p>
-        </div>
-    {% endif %}
-
         {{ form_start(form, {'attr': {
             'hx-post': path('app_spa_message'),
-            'hx-target': '#response-div',
+            'hx-target': 'body',
         }}) }}
         {{ form_label(form.content) }}
         {{ form_widget(form.content) }}

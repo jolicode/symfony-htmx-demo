@@ -21,7 +21,7 @@ class MessageRepository extends ServiceEntityRepository
         parent::__construct($registry, Message::class);
     }
 
-    public function getByContentLike(string $content): array
+    public function getByContentLike(?string $content): array
     {
         if (empty($content)) {
             return [];
