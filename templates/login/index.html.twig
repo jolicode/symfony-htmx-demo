@@ -29,10 +29,11 @@
                 <input type="hidden" name="_target_path" value="/account"> #}
 
                 <button type="submit">login</button>
+            </form>
             <div>
-                <a href="#" hx-get="#" hx-target="#modal" hx-swap="delete">
+                <button onclick="htmx.remove(htmx.find('#modal'));">
                     Close
-                </a>
+                </button>
             </div>
         </div>
     </div>

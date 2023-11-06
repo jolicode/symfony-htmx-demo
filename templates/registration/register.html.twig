@@ -25,10 +25,11 @@
             }) }}
             <button type="submit" class="btn">Register</button>
             {{ form_end(registrationForm) }}
+
             <div>
-                <a href="#" hx-get="#" hx-target="#modal" hx-swap="delete">
+                <button onclick="htmx.remove(htmx.find('#modal'));">
                     Close
-                </a>
+                </button>
             </div>
         </div>
     </div>
