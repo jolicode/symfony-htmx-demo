@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    background-color: lightgray;
-}
-
 /***** MODAL DIALOG ****/
 #modal {
     /* Underlay covers entire screen. */

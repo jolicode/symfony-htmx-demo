@@ -6,32 +6,53 @@
     <div id="modal">
         <div class="modal-underlay"></div>
         <div class="modal-content">
-            <h1>Log in</h1>
-
-            {% if error %}
-                <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-            {% endif %}
-
-            <form
+            <form   class="w-full mt-4"
                     action="{{ path('app_login') }}"
                     method="post"
                     hx-post="{{ path('app_login') }}"
                     hx-target="#modal-div"
                     hx-select="#modal"
             >
-                <label for="username">Email:</label>
-                <input type="text" id="username" name="_username" value="{{ last_username }}">
-
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="_password">
-
-                {# If you want to control the URL the user is redirected to on success
-                <input type="hidden" name="_target_path" value="/account"> #}
-
-                <button type="submit">login</button>
+                {% if error %}
+                    <div class="md:flex md:items-center mb-6">
+                        {{ error.messageKey|trans(error.messageData, 'security') }}
+                    </div>
+                {% endif %}
+                <div class="md:flex md:items-center mb-6">
+                    <div class="md:w-1/3">
+                        <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+                            Email
+                        </label>
+                    </div>
+                    <div class="md:w-2/3">
+                        <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                               type="text" id="username" name="_username" value="{{ last_username }}">
+                    </div>
+                </div>
+                <div class="md:flex md:items-center mb-6">
+                    <div class="md:w-1/3">
+                        <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-password">
+                            Password
+                        </label>
+                    </div>
+                    <div class="md:w-2/3">
+                        <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                               type="password" id="password" name="_password">
+                    </div>
+                </div>
+                <div class="md:flex md:items-center">
+                    <div class="md:w-1/3"></div>
+                    <div class="md:w-2/3">
+                        <button class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                                type="submit">
+                            Log In
+                        </button>
+                    </div>
+                </div>
             </form>
-            <div>
-                <button onclick="htmx.remove(htmx.find('#modal'));">
+            <div class="inline-flex">
+                <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded"
+                        onclick="htmx.remove(htmx.find('#modal'));">
                     Close
                 </button>
             </div>

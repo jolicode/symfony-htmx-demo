@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <table>
+    <table class="table-auto border-separate border-spacing-2 border border-slate-500 rounded">
         <thead>
         <tr>
-            <th>Comments</th>
+            <th class="rounded border border-slate-600">Comments</th>
         </tr>
         </thead>
         <tbody
@@ -16,15 +16,16 @@
         </tr>
         </tbody>
     </table>
+
     <hr class="mt-4 mb-3">
 
-    <input type="search"
+    <input type="search" class="form-control focus:outline-none mb-3"
            name="search" placeholder="Search for a message"
            hx-get="{{ path('app_spa_search_message') }}"
            hx-trigger="keyup changed delay:100ms, search"
            hx-target="#search-results">
 
-    <table>
+    <table class="table table-auto border-separate border-spacing-2 border border-slate-500">
         <tbody id="search-results">
         </tbody>
     </table>

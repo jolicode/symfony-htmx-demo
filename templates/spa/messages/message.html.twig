@@ -2,17 +2,23 @@
 
 {% block alert %}
     {% if message is defined %}
-        <p>Message "{{ message.content }}" has been sent!</p>
+        <div class="mb-3 bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3">
+            <p class="text-sm">Message "{{ message.content }}" has been sent!</p>
+        </div>
     {% endif %}
 {% endblock %}
 
 {% block body %}
-        {{ form_start(form, {'attr': {
-            'hx-post': path('app_spa_message'),
-            'hx-target': 'body',
-        }}) }}
-        {{ form_label(form.content) }}
-        {{ form_widget(form.content) }}
-        {{ form_widget(form.submit) }}
+    {{ form_start(form, {'attr': {
+        'hx-post': path('app_spa_message'),
+        'hx-target': 'body',
+    }}) }}
+        <div class="mb-3">
+            {{ form_label(form.content) }}
+            {{ form_widget(form.content, {'attr': {'class': 'block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500'}}) }}
+        </div>
+        <div>
+            {{ form_widget(form.submit, {'attr': {'class': 'shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded'}}) }}
+        </div>
     {{ form_end(form) }}
 {% endblock %}
