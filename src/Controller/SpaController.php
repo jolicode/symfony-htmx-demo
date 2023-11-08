@@ -7,6 +7,7 @@ use App\Form\MessageType;
 use App\Repository\MessageRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -81,18 +82,6 @@ class SpaController extends AbstractController
             'last_username' => $lastUsername,
             'error' => $error,
         ]);
-    }
-
-    #[Route('/login/success', name: 'app_login_success')]
-    public function success(): Response
-    {
-        $response = $this->render('spa/index.html.twig', [
-            'controller_name' => 'RegistrationController', // you could also remove it
-        ]);
-
-        $response->headers->set('HX-Refresh', 'true');
-
-        return $response;
     }
 
     #[Route('/logout', name: 'app_logout', methods: ['GET'])]

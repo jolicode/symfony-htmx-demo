@@ -19,8 +19,7 @@ security:
             form_login:
                 login_path: app_login
                 check_path: app_login
-                default_target_path: app_login_success
-                always_use_default_target_path: true
+                success_handler: App\Security\Authentication\AuthenticationSuccessHandler
             logout:
                 path: app_logout
                 target: app

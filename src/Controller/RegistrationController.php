@@ -40,9 +40,8 @@ class RegistrationController extends AbstractController
 
             // if you have lots of parameters, a redirect to route would be great
             // but it creates a RedirectResponse, and does not take our headers into account
-            $response = $this->render('spa/index.html.twig', [
-                'controller_name' => 'RegistrationController', // you could also remove it
-            ]);
+            $response = new Response();
+
             $response->headers->set('HX-Refresh', 'true');
 
             return $response;
