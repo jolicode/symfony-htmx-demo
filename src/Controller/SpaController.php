@@ -43,10 +43,11 @@ class SpaController extends AbstractController
             $em->persist($message);
             $em->flush();
 
+            $this->addFlash('success', sprintf('Message "%s" sent!', $message->getContent()));
+
             return $this->render('spa/messages/message.html.twig', [
                 'form' => $form->createView(),
                 'submitted' => true,
-                'message' => $message,
             ]);
         }
 

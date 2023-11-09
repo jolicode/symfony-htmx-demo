@@ -1,13 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block alert %}
-    {% if message is defined %}
-        <div class="mb-3 bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3">
-            <p class="text-sm">Message "{{ message.content }}" has been sent!</p>
-        </div>
-    {% endif %}
-{% endblock %}
-
 {% block body %}
     {{ form_start(form, {'attr': {
         'hx-post': path('app_spa_message'),

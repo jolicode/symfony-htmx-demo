@@ -70,7 +70,14 @@
         </div>
     </nav>
 
-    {% block alert %}{% endblock %}
+    {% if app.request.hasPreviousSession %}
+        {% for success in app.flashes('success') %}
+            <div class="mb-3 bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3">
+                <p class="text-sm">{{ success }}"</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+
     <div class="container w-full md:max-w-3xl mx-auto pt-20">
         {% block body %}{% endblock %}
     </div>
