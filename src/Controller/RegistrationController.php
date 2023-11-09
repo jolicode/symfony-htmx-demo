@@ -42,6 +42,7 @@ class RegistrationController extends AbstractController
             // but it creates a RedirectResponse, and does not take our headers into account
             $response = new Response();
 
+            $response->headers->set('HX-Location', '/');
             $response->headers->set('HX-Refresh', 'true');
 
             return $response;

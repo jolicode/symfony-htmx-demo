@@ -13,11 +13,10 @@ class AuthenticationSuccessHandler implements AuthenticationSuccessHandlerInterf
 {
     public function onAuthenticationSuccess(Request $request, TokenInterface $token): Response
     {
-        $response = new Response('/');
+        $response = new Response();
 
         $response->headers->set('HX-Location', '/');
         $response->headers->set('HX-Refresh', 'true');
-        $response->headers->set('HX-Redirect', '/');
 
         return $response;
     }
