@@ -1,5 +1,7 @@
 # Starting the project
 
+This is the source code for the blog post at https://jolicode.com/blog/making-a-single-page-application-with-htmx-and-symfony
+
 ## Requirements
 
 - Symfony CLI
