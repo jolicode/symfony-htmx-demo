@@ -10,8 +10,8 @@
 - Clone the repository
 
 ```shell
-$ composer install
-$ php bin/console tailwind:build
+composer install
+php bin/console tailwind:build
 ```
 
 - Edit your `.env` and your `docker-compose.yaml` files to add your database credentials
@@ -19,8 +19,9 @@ $ php bin/console tailwind:build
 ## Run the project
 
 ```shell
-$ docker compose up
-$ symfony server:start
+docker compose up -d
+symfony server:start -d
+symfony open:local
 ```
 
 - 🌐: `https://127.0.0.1:8000`
