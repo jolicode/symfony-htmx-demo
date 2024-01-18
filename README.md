@@ -13,7 +13,6 @@ This is the source code for the blog post at https://jolicode.com/blog/making-a-
 
 ```shell
 composer install
-php bin/console tailwind:build
 ```
 
 - Edit your `.env` and your `docker-compose.yaml` files to add your database credentials
