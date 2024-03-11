@@ -22,6 +22,7 @@ composer install
 
 ```shell
 docker compose up -d
+symfony console importmap:install
 symfony server:start -d
 symfony open:local
 ```
