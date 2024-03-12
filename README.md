@@ -6,6 +6,7 @@ This is the source code for the blog post at https://jolicode.com/blog/making-a-
 
 - Symfony CLI
 - Docker
+- PHP ^8.2
 
 ## Installation
 
@@ -21,6 +22,7 @@ composer install
 
 ```shell
 docker compose up -d
+symfony console importmap:install
 symfony server:start -d
 symfony open:local
 ```
