@@ -17,6 +17,6 @@ return [
         'entrypoint' => true,
     ],
     'htmx.org' => [
-        'version' => '1.9.12',
+        'version' => 'v2.0.4',
     ],
 ];
