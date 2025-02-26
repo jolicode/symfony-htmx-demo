@@ -10,8 +10,6 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-app}
     volumes:
       - database_data:/var/lib/postgresql/data:rw
-    ports:
-      - "8877:5432"
 
 volumes:
   database_data:

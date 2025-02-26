@@ -23,6 +23,8 @@ composer install
 ```shell
 docker compose up -d
 symfony console importmap:install
+symfony console doctrine:schema:create
+symfony console tailwind:build
 symfony server:start -d
 symfony open:local
 ```
