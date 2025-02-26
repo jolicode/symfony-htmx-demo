@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HTMX Like{% endblock %}
+
+{% block body %}
+    <div class="example-wrapper">
+        <h1>Do you like this demo?</h1>
+
+        <p class="mt-4 mb-6">A simple "like" button demo.</p>
+
+        <div class="flex justify-center">
+            {% block like %}
+                <button
+                        hx-post="{{ path('app_like_toggle') }}"
+                        hx-swap="outerHTML"
+                        id="allow-morphing"
+                        class="{{ isLiked ? 'text-rose-600' : 'text-neutral-500' }} transition-colors duration-500 text-7xl">
+                    ❤
+                </button>
+            {% endblock %}
+        </div>
+
+        <p>All you need to do to use CSS transitions for an element is keep its id stable across requests!</p>
+    </div>
+{% endblock %}

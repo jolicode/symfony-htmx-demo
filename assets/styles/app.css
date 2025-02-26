@@ -89,3 +89,26 @@
     0% {transform: scale(1);}
     100% {transform: scale(0.9);}
 }
+
+/**
+ * Components
+ */
+.btn {
+    @apply shadow bg-purple-500 hover:bg-purple-400 text-white font-bold py-2 px-4 rounded;
+}
+.btn--secondary {
+    @apply bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded;
+}
+h1 {
+    @apply text-5xl;
+}
+h2 {
+    @apply text-4xl;
+}
+h3 {
+    @apply text-3xl;
+}
+h4 {
+    @apply text-2xl;
+}
+
