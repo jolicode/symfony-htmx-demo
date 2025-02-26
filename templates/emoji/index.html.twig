@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HTMX Emoji Search{% endblock %}
+
+{% block body %}
+    <div class="example-wrapper">
+
+        <input type="search"
+               name="q" placeholder="Begin Typing To Search Users..."
+               hx-get="{{ path('app_emoji_index') }}"
+               hx-trigger="input changed delay:200ms"
+               hx-target="#search-results"
+               hx-indicator=".htmx-indicator">
+
+        <div id="search-results">
+            {% block searchResults %}
+                {% for emoji, label in results %}
+                    {{ emoji }} : {{ label }}<br>
+                {% endfor %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
