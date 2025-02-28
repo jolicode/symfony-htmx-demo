@@ -35,6 +35,7 @@ class EmojiController extends AbstractController
 
         return $this->render('emoji/index.html.twig', [
             'results' => $results,
+            'q' => $q,
         ]);
     }
 }

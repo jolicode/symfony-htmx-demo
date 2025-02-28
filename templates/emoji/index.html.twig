@@ -3,21 +3,27 @@
 {% block title %}HTMX Emoji Search{% endblock %}
 
 {% block body %}
-    <div class="example-wrapper">
+    <input type="search"
+           name="q"
+           placeholder="Begin Typing To Search..."
+           hx-get="{{ path('app_emoji_index') }}"
+           hx-trigger="input changed delay:200ms"
+           hx-target="#search-results"
+           hx-push-url="true"
+           autocomplete="off"
+           value="{{ q }}"
+    >
 
-        <input type="search"
-               name="q" placeholder="Begin Typing To Search Users..."
-               hx-get="{{ path('app_emoji_index') }}"
-               hx-trigger="input changed delay:200ms"
-               hx-target="#search-results"
-               hx-indicator=".htmx-indicator">
-
-        <div id="search-results">
-            {% block searchResults %}
-                {% for emoji, label in results %}
-                    {{ emoji }} : {{ label }}<br>
-                {% endfor %}
-            {% endblock %}
-        </div>
+    <div id="search-results" class="mt-4 flex flex-wrap justify-center">
+        {% block searchResults %}
+            {% for emoji, label in results %}
+                <div class="m-3 text-center">
+                    <span class="text-7xl block mb-2">{{ emoji }}</span>
+                    <span class="text-xs block font-mono max-w-24">{{ label }}</span>
+                </div>
+            {% else %}
+                <p>No results found.</p>
+            {% endfor %}
+        {% endblock %}
     </div>
 {% endblock %}
