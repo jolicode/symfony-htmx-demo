@@ -25,17 +25,30 @@ class EmojiController extends AbstractController
             $results = [];
         }
 
+        // Paginate Results
+        $emojiPerPage = 20;
+        $pages = ceil(count($results) / $emojiPerPage);
+        $page = $request->query->getInt('page', 1);
+        if ($pages && $page > $pages) {
+            throw $this->createNotFoundException('Page not found.');
+        }
+        $results = array_slice($results, ($page-1) * $emojiPerPage, $emojiPerPage);
 
         // Here is some HTMX magic
         if ($request->headers->has('hx-request') && $request->headers->get('hx-boosted') !== 'true') {
             return $this->renderBlock('emoji/index.html.twig', 'searchResults', [
                 'results' => $results,
+                'q' => $q,
+                'page' => $page,
+                'pages' => $pages,
             ]);
         }
 
         return $this->render('emoji/index.html.twig', [
             'results' => $results,
             'q' => $q,
+            'page' => $page,
+            'pages' => $pages,
         ]);
     }
 }

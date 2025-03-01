@@ -99,4 +99,10 @@ class SpaController extends AbstractController
             'messages' => $messageRepository->findAll(),
         ]);
     }
+
+    #[Route('/_time')]
+    public function time(): Response
+    {
+        return new Response(date('H:i:s'));
+    }
 }

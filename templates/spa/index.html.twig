@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SpaController!{% endblock %}
+{% block title %}HTMX Demo{% endblock %}
 
 {% block body %}
 <div class="example-wrapper">
@@ -8,5 +8,10 @@
 
     <p>Welcome to the HTMX Demo.</p>
     <p>When you surf this website, there is no full page reload!</p>
+
+    <p>
+        Server time:
+        <span hx-get="{{ path('app_spa_time') }}" hx-trigger="load"></span>
+    </p>
 </div>
 {% endblock %}
