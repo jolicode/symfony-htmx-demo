@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Guestbook{% endblock %}
+
+{% form_theme symfonyWayForm 'tailwind_2_layout.html.twig' %}
+{% form_theme htmxWayForm 'tailwind_2_layout.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <meta name="htmx-config" content='{
+        "responseHandling":[
+            {"code":"422", "swap": true},
+            {"code":"[45]..", "swap": false, "error":true},
+            {"code":"...", "swap": true}
+        ]
+    }' />
+{% endblock %}
+
+{% block body %}
+    <div class="grid grid-cols-2 gap-6">
+        <div>
+            <h2>Symfony Way</h2>
+
+            <form action="{{ path('app_guestbook_index') }}" method="post" class="mt-5" novalidate>
+                {{ form_row(symfonyWayForm.content) }}
+                {{ form_row(symfonyWayForm.email) }}
+
+                {{ form_row(symfonyWayForm.submit, {'attr': {'class': 'btn'}}) }}
+
+                {{ form_rest(symfonyWayForm) }}
+            </form>
+        </div>
+        <div>
+            <h2>HTMX</h2>
+
+            <form hx-boost="true" action="{{ path('app_guestbook_index') }}" method="post" class="mt-5" novalidate>
+                {{ form_row(htmxWayForm.content) }}
+                {{ form_row(htmxWayForm.email) }}
+
+                {{ form_row(htmxWayForm.submit, {'attr': {'class': 'btn'}}) }}
+
+                {{ form_rest(htmxWayForm) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}
