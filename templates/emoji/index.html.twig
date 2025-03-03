@@ -14,10 +14,10 @@
            value="{{ q }}"
     >
 
-    <div id="search-results" class="mt-4 flex flex-wrap justify-center">
+    <div id="search-results" class="mt-4 grid grid-cols-4 gap-2">
         {% block searchResults %}
             {% for emoji, label in results %}
-                <div class="m-3 text-center"
+                <div class="m-3 text-center overflow-hidden"
                 {% if loop.last and page < pages %}
                     hx-get="{{ path('app_emoji_index', {
                         q: q, page: (page + 1)
@@ -27,7 +27,7 @@
                 {% endif %}
                 >
                     <span class="text-7xl block mb-2">{{ emoji }}</span>
-                    <span class="text-xs block font-mono max-w-24">{{ label }}</span>
+                    <span class="text-xs block font-mono">{{ label }}</span>
                 </div>
             {% else %}
                 <p>No results found.</p>
