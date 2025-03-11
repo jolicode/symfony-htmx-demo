@@ -102,7 +102,7 @@ input, textarea {
 .btn--secondary {
     @apply bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded;
 }
-textarea, input[type=text], input[type=email], input[type=search] {
+textarea, input[type=text], input[type=email], input[type=search], select {
     @apply border-2 hover:bg-gray-100 text-gray-800 py-2 px-4 rounded;
 }
 h1 {

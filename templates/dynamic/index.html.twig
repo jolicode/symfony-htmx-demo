@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dependent Form Fields{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <meta name="htmx-config" content='{
+        "responseHandling":[
+            {"code":"422", "swap": true},
+            {"code":"[45]..", "swap": false, "error":true},
+            {"code":"...", "swap": true}
+        ]
+    }' />
+{% endblock %}
+
+{% block body %}
+    <h2>Dependent Form Fields</h2>
+
+    <p>Translation of <a href="https://ux.symfony.com/demos/live-component/dependent-form-fields">live-component/dependent-form-fields</a> demo to HTMX.</p>
+
+    <div class="grid grid-cols-2 gap-6 mt-10">
+        <div>
+            <h2>Meal Planner</h2>
+
+            {% block form %}
+                {% form_theme form 'tailwind_2_layout.html.twig' %}
+
+                <form hx-post="{{ path('app_dynamicform_index') }}" method="post" hx-trigger="change submit" hx-target="this" hx-swap="outerHTML" novalidate>
+                    {{ form_row(form.meal) }}
+
+                    {% if form.mainFood is defined %}
+                        {{ form_row(form.mainFood) }}
+                    {% endif %}
+
+                    {% if form.pizzaSize is defined %}
+                        {{ form_row(form.pizzaSize) }}
+                    {% endif %}
+
+                    {{ form_rest(form) }}
+                </form>
+
+                {% if app.request.isMethod('POST') %}
+                    <div id="result" hx-swap-oob="true">
+                        {{ block('result') }}
+                    </div>
+                {% endif %}
+            {% endblock %}
+        </div>
+        <div>
+            <h2>Result</h2>
+
+            <div id="result">
+                {% block result %}
+                    <p class="text-7xl text-center">
+                        {% if mealPlan.meal %}
+                            For {{ mealPlan.meal.readable|default('') }}
+                            {% if mealPlan.mainFood == constant('App\\Enum\\Food::Pizza') %}
+                                I'm gonna have a {{ mealPlan.pizzaSize.readable|default('') }} {{ mealPlan.mainFood.readable|default('nothing') }}
+                            {% else %}
+                                I'm gonna have {{ mealPlan.mainFood.readable|default('nothing') }}
+                            {% endif %}
+                        {% else %}
+                            Results displayed here.
+                        {% endif %}
+                    </p>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
