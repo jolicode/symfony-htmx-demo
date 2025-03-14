@@ -33,7 +33,17 @@
         <div>
             <h2>HTMX</h2>
 
-            <form hx-boost="true" action="{{ path('app_guestbook_index') }}" method="post" class="mt-5" novalidate>
+            <form
+                    {# hx-boost="true"  #}
+
+                    {# cheat for the demo #}
+                    hx-post="{{ path('app_guestbook_index') }}"
+                    hx-select="#bodyContainer" hx-target="#bodyContainer"
+                    hx-swap="outerHTML"
+
+                    action="{{ path('app_guestbook_index') }}"
+                    method="post"
+                    class="mt-5" id="htmxWayForm" novalidate>
                 {{ form_row(htmxWayForm.content) }}
                 {{ form_row(htmxWayForm.email) }}
 
