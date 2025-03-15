@@ -106,10 +106,10 @@ textarea, input[type=text], input[type=email], input[type=search], select {
     @apply border-2 hover:bg-gray-100 text-gray-800 py-2 px-4 rounded;
 }
 h1 {
-    @apply text-5xl;
+    @apply text-5xl mb-4;
 }
 h2 {
-    @apply text-4xl;
+    @apply text-4xl mb-3;
 }
 h3 {
     @apply text-3xl;

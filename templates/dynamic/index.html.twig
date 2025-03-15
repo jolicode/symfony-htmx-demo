@@ -14,7 +14,7 @@
 {% endblock %}
 
 {% block body %}
-    <h2>Dependent Form Fields</h2>
+    <h1>Dependent Form Fields</h1>
 
     <p>Translation of <a href="https://ux.symfony.com/demos/live-component/dependent-form-fields">live-component/dependent-form-fields</a> demo to HTMX.</p>
 
@@ -48,16 +48,17 @@
         </div>
         <div>
             <h2>Result</h2>
+            <span class="text-sm text-gray-500 relative -top-4">with OOB swap</span>
 
             <div id="result">
                 {% block result %}
-                    <p class="text-7xl text-center">
+                    <p class="text-2xl text-center pt-8 text-red-700">
                         {% if mealPlan.meal %}
                             For {{ mealPlan.meal.readable|default('') }}
                             {% if mealPlan.mainFood == constant('App\\Enum\\Food::Pizza') %}
-                                I'm gonna have a {{ mealPlan.pizzaSize.readable|default('') }} {{ mealPlan.mainFood.readable|default('nothing') }}
+                                I'm going to have a {{ mealPlan.pizzaSize.readable|default('') }} {{ mealPlan.mainFood.readable|default('nothing') }}
                             {% else %}
-                                I'm gonna have {{ mealPlan.mainFood.readable|default('nothing') }}
+                                I'm going to have {{ mealPlan.mainFood.readable|default('nothing') }}
                             {% endif %}
                         {% else %}
                             Results displayed here.

@@ -9,9 +9,9 @@
     <p>Welcome to the HTMX Demo.</p>
     <p>When you surf this website, there is no full page reload!</p>
 
-    <p>
-        Server time:
-        <span hx-get="{{ path('app_spa_time') }}" hx-trigger="load"></span>
+    <p class="mt-4">
+        Server time lazy loaded:
+        <span hx-get="{{ path('app_spa_time') }}" hx-trigger="load" class="text-red-700"></span>
     </p>
 </div>
 {% endblock %}
