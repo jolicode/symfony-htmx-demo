@@ -4,7 +4,9 @@ framework:
 
     # Note that the session will be started ONLY if you read or write from it.
     session:
-        cookie_samesite: 'none'
+        #cookie_samesite: 'none'
+        #cookie_secure: false
+        name: appSession
     #esi: true
     #fragments: true
 
