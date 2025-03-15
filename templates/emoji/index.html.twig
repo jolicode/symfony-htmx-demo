@@ -6,35 +6,37 @@
     <h1>Emoji search</h1>
     <span class="text-sm text-gray-500 relative -top-4">with infinite scroll</span>
 
-    <input type="search"
-           name="q"
-           placeholder="Begin Typing To Search..."
-           hx-get="{{ path('app_emoji_index') }}"
-           hx-trigger="input changed delay:200ms"
-           hx-target="#search-results"
-           hx-push-url="true"
-           autocomplete="off"
-           value="{{ q }}"
-    >
+    <form action="{{ path('app_emoji_index') }}" method="get">
+        <input type="search"
+               name="q"
+               placeholder="Begin Typing To Search..."
+               hx-get="{{ path('app_emoji_index') }}"
+               hx-trigger="input changed delay:200ms"
+               hx-target="#search-results"
+               hx-push-url="true"
+               autocomplete="off"
+               value="{{ q }}"
+        >
 
-    <div id="search-results" class="mt-4 grid grid-cols-4 gap-2">
-        {% block searchResults %}
-            {% for emoji, label in results %}
-                <div class="m-3 text-center overflow-hidden"
-                {% if loop.last and page < pages %}
-                    hx-get="{{ path('app_emoji_index', {
-                        q: q, page: (page + 1)
-                    }) }}"
-                    hx-trigger="revealed"
-                    hx-swap="afterend"
-                {% endif %}
-                >
-                    <span class="text-7xl block mb-2">{{ emoji }}</span>
-                    <span class="text-xs block font-mono">{{ label }}</span>
-                </div>
-            {% else %}
-                <p>No results found.</p>
-            {% endfor %}
-        {% endblock %}
-    </div>
+        <div id="search-results" class="mt-4 grid grid-cols-4 gap-2">
+            {% block searchResults %}
+                {% for emoji, label in results %}
+                    <div class="m-3 text-center overflow-hidden"
+                    {% if loop.last and page < pages %}
+                        hx-get="{{ path('app_emoji_index', {
+                            q: q, page: (page + 1)
+                        }) }}"
+                        hx-trigger="revealed"
+                        hx-swap="afterend"
+                    {% endif %}
+                    >
+                        <span class="text-7xl block mb-2">{{ emoji }}</span>
+                        <span class="text-xs block font-mono">{{ label }}</span>
+                    </div>
+                {% else %}
+                    <p>No results found.</p>
+                {% endfor %}
+            {% endblock %}
+        </div>
+    </form>
 {% endblock %}
