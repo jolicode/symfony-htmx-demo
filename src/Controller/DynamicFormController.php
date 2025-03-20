@@ -22,15 +22,7 @@ class DynamicFormController extends AbstractController
         $form = $this->createForm(DynamicType::class, new MealPlan());
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            /*
-            $response = $this->renderBlock('dynamic/index.html.twig', 'result', [
-                'form' => $form,
-                'mealPlan' => $form->getData(),
-            ]);
-            $response->headers->set('HX-Retarget', '#result');
-            */
-
-//            return $response;
+            // Save stuffs
         }
 
         // Here is some HTMX magic
