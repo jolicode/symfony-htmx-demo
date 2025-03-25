@@ -2,17 +2,6 @@
 
 {% block title %}Dependent Form Fields{% endblock %}
 
-{% block javascripts %}
-    {{ parent() }}
-    <meta name="htmx-config" content='{
-        "responseHandling":[
-            {"code":"422", "swap": true},
-            {"code":"[45]..", "swap": false, "error":true},
-            {"code":"...", "swap": true}
-        ]
-    }' />
-{% endblock %}
-
 {% block body %}
     <h1>Dependent Form Fields</h1>
 

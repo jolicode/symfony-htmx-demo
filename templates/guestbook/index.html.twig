@@ -5,17 +5,6 @@
 {% form_theme symfonyWayForm 'tailwind_2_layout.html.twig' %}
 {% form_theme htmxWayForm 'tailwind_2_layout.html.twig' %}
 
-{% block javascripts %}
-    {{ parent() }}
-    <meta name="htmx-config" content='{
-        "responseHandling":[
-            {"code":"422", "swap": true},
-            {"code":"[45]..", "swap": false, "error":true},
-            {"code":"...", "swap": true}
-        ]
-    }' />
-{% endblock %}
-
 {% block body %}
     <h1>Guestbook</h1>
     <div class="grid grid-cols-2 gap-6 mt-8">
