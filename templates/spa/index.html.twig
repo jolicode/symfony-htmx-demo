@@ -11,7 +11,7 @@
 
     <p class="mt-4">
         Server time lazy loaded:
-        <span hx-get="{{ path('app_spa_time') }}" hx-trigger="load" class="text-red-700"></span>
+        <span hx-get="{{ path('app_spa_time') }}" hx-trigger="load" class="text-red-700">{{ 'now'|date('H:i:s') }}</span>
     </p>
 </div>
 {% endblock %}
