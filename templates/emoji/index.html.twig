@@ -22,14 +22,13 @@
             {% block searchResults %}
                 {% for emoji, label in results %}
                     <div class="m-3 text-center overflow-hidden"
-                    {% if loop.last and page < pages %}
+                    {%- if loop.last and page < pages %}
                         hx-get="{{ path('app_emoji_index', {
                             q: q, page: (page + 1)
                         }) }}"
                         hx-trigger="revealed"
                         hx-swap="afterend"
-                    {% endif %}
-                    >
+                    {% endif -%}>
                         <span class="text-7xl block mb-2">{{ emoji }}</span>
                         <span class="text-xs block font-mono">{{ label }}</span>
                     </div>

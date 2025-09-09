@@ -12,9 +12,9 @@ This is the source code for the blog post at https://jolicode.com/blog/making-a-
 
 ```shell
 composer install
-docker compose up -d
+#docker compose up -d
 symfony console importmap:install
-symfony console doctrine:schema:create
+#symfony console doctrine:schema:create
 symfony console tailwind:build
 symfony server:start -d
 symfony open:local
